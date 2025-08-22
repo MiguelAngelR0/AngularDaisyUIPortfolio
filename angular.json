@@ -5,9 +5,18 @@
   "projects": {
     "AngularDaisyUIPortfolio": {
       "projectType": "application",
+      "i18n": {
+        "sourceLocale": "es-ES",
+        "locales": {
+          "en": {
+            "translation": "src/locale/messages.en.xlf",
+            "baseHref": ""
+          }
+        }
+      },
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "css"
         }
       },
       "root": "",
@@ -24,15 +33,17 @@
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
+            "inlineStyleLanguage": "css",
             "assets": [
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/aos/dist/aos.css",
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -68,6 +79,9 @@
             },
             "development": {
               "buildTarget": "AngularDaisyUIPortfolio:build:development"
+            },
+            "en": {
+              "buildTarget": "AngularDaisyUIPortfolio:build:en"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +97,7 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
+            "inlineStyleLanguage": "css",
             "assets": [
               {
                 "glob": "**/*",
@@ -91,12 +105,18 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/aos/dist/aos.css",
+              "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/aos/dist/aos.js"
+            ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

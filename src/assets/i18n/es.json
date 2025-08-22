@@ -1,0 +1,84 @@
+{
+  "header": {
+    "home": "Inicio",
+    "skills": "Habilidades",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "faq": "FAQ"
+  },
+  "hero": {
+    "greeting": "👋 ¡Hola!",
+    "name": "Soy Miguel Angel",
+    "role": "Full Stack Developer",
+    "specialties": {
+      "text": "Especializado en",
+      "angular": "Angular",
+      "node": "Node.js"
+    },
+    "description": "Desarrollador Full Stack con experiencia en Angular 20 creando de componentes reutilizables y arquitecturas escalables. Especializado en NestJS para construir backends robustos y manejo de bases de datos tanto relacionales (PostgreSQL, MySQL) como no relacionales (MongoDB)."
+  },
+  "skill": {
+    "title": "Habilidades",
+    "certificates": {
+      "modalUdemy": "Ir al certificado"
+    }
+  },
+  "timeline": {
+    "title": "Desarrollo profesional",
+    "2023_daw": {
+      "title": "Formación Profesional en Diseño y Desarrollo de Aplicaciones WEB (DAW)",
+      "description": "Durante mi formación adquirí una base sólida en programación, comprendiendo paradigmas como la Programación Orientada a Objetos (OOP), programación estructurada y programación funcional. Aprendí el desarrollo de aplicaciones web tanto en frontend como en backend usando el modelo-vista-controlador, gestión de bases de datos, despliegues en servidores y fundamentos de sistemas. También trabajé con control de versiones, metodologías de desarrollo y buenas prácticas de programación."
+    },
+    "2023_seidor": {
+      "title": "Angular 12 / Ionic",
+      "subTitle": "Seidor",
+      "description": "Colaboré en proyectos para la consultora Seidor y su cliente MAPFRE Brasil, del sector asegurador, participando en el desarrollo de aplicaciones híbridas con Angular 12 e Ionic en entornos de preproducción y producción. Me encargué de la resolución de incidencias, la implementación de mejoras y la adaptación de la aplicación a los distintos sistemas operativos (Android e iOS), garantizando su correcto funcionamiento y calidad en todas las fases del ciclo de vida."
+    },
+    "2024_digitalvirgo": {
+      "title": "Angular / RxJs / Redux / PrimeNg",
+      "subTitle": "Digital Virgo",
+      "description": "Trabajé en un panel de administración de recursos humanos utilizando las últimas versiones de Angular para el desarrollo de componentes y aplicaciones web escalables. Implementé bibliotecas de componentes como PrimeNG y frameworks de estilos como TailwindCSS para optimizar la UI/UX. Además, adquirí experiencia práctica en programación reactiva con RxJS y en la gestión del estado global con Redux."
+    },
+    "2025_atm": {
+      "title": "Angular / Stencil / Storybook",
+      "subTitle": "ATM Maggioli",
+      "description": "Desarrollé aplicaciones web para una empresa del sector de la administración pública, creando una biblioteca de componentes con Stencil, documentándola con Storybook y realizando pruebas con Jest, mientras la integraba en proyectos basados en Angular 20 consumiendo una base de datos mediante GraphQL."
+    }
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "question_1": {
+      "title": "¿Estás disponible para hacer proyectos freelance o para oportunidades fulltime?",
+      "answer": "Estoy disponible tanto para proyectos freelance como para oportunidades fulltime. También estoy abierto a discutir proyectos interesantes que se alineen con mis habilidades. Puedes ponerte en contacto conmigo a través del formulario de contacto."
+    },
+    "question_2": {
+      "title": "¿Cuál es tu stack tecnológico preferido?",
+      "answer": "Mi experiencia principal está en el ecosistema moderno de JavaScript. Soy más competente con Angular para el desarrollo frontend y NestJS para el desarrollo backend. Además, tengo experiencia trabajando con bases de datos como PostgreSQL y MongoDB. Me considero un aprendiz constante y siempre estoy entusiasmado por adaptarme a nuevas tecnologías que un proyecto requiera."
+    },
+    "question_3": {
+      "title": "¿Cuál es tu metodología de trabajo?",
+      "answer": "Sigo un enfoque ágil. Normalmente comienzo entendiendo los requerimientos y las historias de usuario, luego diseño la arquitectura de componentes y paso al desarrollo, escribiendo código limpio y mantenible. Creo en la comunicación frecuente, revisiones de código regulares y pruebas exhaustivas para asegurar un producto final de alta calidad."
+    },
+    "question_4": {
+      "title": "¿Estás abierto a trabajar en remoto o considerar reubicación?",
+      "answer": "Estoy totalmente preparado y con experiencia en el trabajo remoto, manteniendo siempre una alta productividad. También estoy abierto a considerar oportunidades de reubicación para una posición que encaje con mis objetivos profesionales."
+    }
+  },
+  "proyectsSection": {
+    "title": "Mis Proyectos",
+    "proyects": {
+      "proyect_1": {
+        "description": "Aplicación e-commerce con login, register y panel administativo con CRUD de productos con Angular y Nest.js. User admin: test1@google.com Password: Abc123"
+      },
+      "proyect_2": {
+        "description": "Buscador de paises y detalles especificos de cada uno"
+      },
+      "proyect_3": {
+        "description": "Buscador de gifs con Angular, gestion de busquedas guardadas en cache y consumo de la API de Giphy"
+      }
+    }
+  },
+  "footer": {
+    "right": "Todos los derechos reservados"
+  }
+}
