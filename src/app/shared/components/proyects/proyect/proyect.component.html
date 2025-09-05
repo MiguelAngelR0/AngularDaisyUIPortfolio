@@ -1,0 +1,30 @@
+<div
+    class="card bg-base-100 shadow-sm hover:shadow-xl transition-shadow duration-300 min-h-[450px] w-full sm:min-w-[400px] h-full">
+    <figure class="px-4 pt-4 overflow-hidden">
+        <img [src]="project.image" [alt]="project.title" 
+             class="rounded-xl h-48 w-full object-cover transition-transform duration-300 hover:scale-110" />
+    </figure>
+
+    <div class="card-body">
+        <h2 class="card-title">
+            {{ project.title }}
+        </h2>
+
+        <p class="text-gray-600">{{ project.description }}</p>
+
+        <div class="flex flex-wrap gap-2">
+            @for (tag of project.tags; track tag) {
+            <div class="badge badge-outline badge-primary">{{ tag }}</div>
+            }
+        </div>
+
+        <div class="card-actions justify-end mt-2">
+            @if (project.demoUrl) {
+            <a [href]="project.demoUrl" target="_blank" class="btn btn-primary btn-sm">Demo</a>
+            }
+            @if (project.githubUrl) {
+            <a [href]="project.githubUrl" target="_blank" class="btn btn-outline btn-sm">GitHub</a>
+            }
+        </div>
+    </div>
+</div>

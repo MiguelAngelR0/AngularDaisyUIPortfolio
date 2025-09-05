@@ -67,6 +67,7 @@
   },
   "proyectsSection": {
     "title": "Mis Proyectos",
+    "noProjects": "No hay proyectos disponibles",
     "proyects": {
       "proyect_1": {
         "description": "Aplicación e-commerce con login, register y panel administativo con CRUD de productos con Angular y Nest.js. User admin: test1@google.com Password: Abc123"
@@ -76,6 +77,9 @@
       },
       "proyect_3": {
         "description": "Buscador de gifs con Angular, gestion de busquedas guardadas en cache y consumo de la API de Giphy"
+      },
+      "proyect_4": {
+        "description": "Landing page corporativa para una empresa de facturación, desarrollada en Angular con diseño responsivo usando Tailwind y DaisyUI orientadas a la captación de clientes."
       }
     }
   },

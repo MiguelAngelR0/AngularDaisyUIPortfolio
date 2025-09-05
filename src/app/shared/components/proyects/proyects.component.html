@@ -1,51 +1,14 @@
 <div class="container mx-auto px-4 py-8">
-  <h1 class="text-3xl font-bold text-center mb-8">Mis Proyectos</h1>
+  <h1 class="text-3xl font-bold text-center mb-8">{{ 'proyectsSection.title' | translate }}</h1>
 
-  <!-- Responsive Grid with Tailwind -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-    <!-- @for directive to iterate through projects -->
     @for (project of projects; track project.id) {
-    <div class="card bg-base-100 shadow-sm hover:shadow-xl transition-shadow duration-300">
-      <figure class="px-4 pt-4">
-        <img [src]="project.image" [alt]="project.title" class="rounded-xl h-48 w-full object-cover" />
-      </figure>
-
-      <div class="card-body">
-        <h2 class="card-title">
-          {{ project.title }}
-          <!-- @if (project.isNew) {
-              <div class="badge badge-secondary">NUEVO</div>
-            } -->
-        </h2>
-
-        <p class="text-gray-600">{{ project.description }}</p>
-
-        <div class="flex flex-wrap gap-2">
-          @for (tag of project.tags; track tag) {
-          <div class="badge badge-outline badge-primary">{{ tag }}</div>
-          }
-        </div>
-
-
-
-
-        <div class="card-actions justify-end mt-2">
-          @if (project.demoUrl) {
-          <a [href]="project.demoUrl" target="_blank" class="btn btn-primary btn-sm">Demo</a>
-          }
-          @if (project.githubUrl) {
-          <a [href]="project.githubUrl" target="_blank" class="btn btn-outline btn-sm">GitHub</a>
-          }
-        </div>
-      </div>
-    </div>
+      <app-proyect [project]="project"></app-proyect>
     }
 
-    <!-- Empty state -->
     @empty {
     <div class="col-span-full text-center py-12">
-      <p class="text-gray-500 text-lg">No hay proyectos disponibles</p>
+      <p class="text-gray-500 text-lg">{{ 'proyectsSection.noProjects' | translate }}</p>
     </div>
     }
   </div>

@@ -1,82 +1,42 @@
-import { Component, inject } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  demoUrl?: string;
-  githubUrl?: string;
-  isNew?: boolean;
-}
+import { Proyect } from '../../interfaces/proyect.interface';
+import { ProyectsService } from '../../services/proyects.service';
+import { ProyectComponent } from './proyect/proyect.component';
 
 @Component({
   selector: 'app-proyects',
-  imports: [],
+  imports: [TranslatePipe, ProyectComponent],
   templateUrl: './proyects.component.html',
   styles: ``
 })
+export class ProyectsComponent implements OnInit, OnDestroy {
 
-
-export class ProyectsComponent {
-
-  translate = inject(TranslateService);
+  private translate = inject(TranslateService);
+  private proyectsService = inject(ProyectsService);
 
   private langChangeSubscription: Subscription;
 
-  projects: Project[] = [];
+  projects: Proyect[] = [];
 
   constructor() {
     this.langChangeSubscription = this.translate.onLangChange.subscribe(() => {
-      this.loadTimelineData();
+      this.loadProjects();
     });
   }
 
   ngOnInit(): void {
-    // Carga los datos de la línea de tiempo cuando el componente se inicializa
-    // y cada vez que cambia el idioma.
-    this.loadTimelineData();
+    this.loadProjects();
   }
 
-  loadTimelineData(): void {
-
-    this.projects = [
-      {
-        id: 1,
-        title: 'E-commerce App',
-        description: this.translate.instant('proyectsSection.proyects.proyect_1.description')
-
-        ,
-        image: 'assets/tesloShopAdmin.png',
-        tags: ['Angular', 'Nest.js', 'MongoDB'],
-        demoUrl: 'https://spiffy-flan-80bdcf.netlify.app/',
-        githubUrl: 'https://github.com/MiguelAngelR0/teslo-shop',
-        isNew: true
-      },
-      {
-        id: 2,
-        title: 'Country Search App',
-        description: this.translate.instant('proyectsSection.proyects.proyect_2.description'),
-        image: 'assets/countryApp.png',
-        tags: ['Angular', 'TypeScript', 'Tailwind', 'DaisyUI'],
-        demoUrl: 'https://miguelangelr0.github.io/country-app/',
-        githubUrl: 'https://github.com/MiguelAngelR0/country-app'
-      },
-      {
-        id: 3,
-        title: 'Gifs App',
-        description: this.translate.instant('proyectsSection.proyects.proyect_3.description'),
-        image: 'assets/gifApp.png',
-        tags: ['Angular', 'Tailwind', 'DaisyUI'],
-        demoUrl: 'https://miguelangelr0.github.io/gifs-app/',
-        githubUrl: 'https://github.com/MiguelAngelR0/gifs-app',
-        isNew: true
-      },
-    ];
+  ngOnDestroy(): void {
+    if (this.langChangeSubscription) {
+      this.langChangeSubscription.unsubscribe();
+    }
   }
 
-
+  private loadProjects(): void {
+    this.projects = this.proyectsService.getProyectsSync();
+  }
 }
