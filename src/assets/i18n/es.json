@@ -19,6 +19,7 @@
   },
   "skill": {
     "title": "Habilidades",
+    "gadgets": "Herramientas",
     "certificates": {
       "modalUdemy": "Ir al certificado"
     }

@@ -19,6 +19,7 @@
   },
   "skill": {
     "title": "Skills",
+    "gadgets": "Gadgets",
     "certificates": {
       "modalUdemy": "Go to certificate"
     }
