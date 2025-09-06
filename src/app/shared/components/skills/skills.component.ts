@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
-import AOS from 'aos';
+
 import { SkillComponent } from './skill/skill.component';
 import { CertificadosComponent } from './certificados/certificados.component';
 import { Skill } from '../../interfaces/skill.interface';
@@ -42,13 +42,7 @@ export class SkillsComponent implements OnInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: false
-    });
-  }
+
 
   getFrontendSkills(): Skill[] {
     return this.skills.filter(skill => skill.categoria === 'frontend');

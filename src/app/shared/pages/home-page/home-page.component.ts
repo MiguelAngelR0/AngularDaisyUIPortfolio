@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import AOS from 'aos';
+
 import { HeroComponent } from '../../components/hero/hero.component';
 import { HeaderComponent } from '../../components/header/header.component';
 import { TimelineComponent } from '../../components/timeline/timeline.component';
@@ -13,12 +15,19 @@ import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
   selector: 'app-home-page',
-  imports: [ CommonModule , HeaderComponent, HeroComponent, TimelineComponent, ContactComponent, ProyectsComponent, ResourcesComponent,SkillsComponent, FrequentlyAskedComponent, FooterComponent],
+  imports: [CommonModule, HeaderComponent, HeroComponent, TimelineComponent, ContactComponent, ProyectsComponent, ResourcesComponent, SkillsComponent, FrequentlyAskedComponent, FooterComponent],
   templateUrl: './home-page.component.html',
-  styles:`
+  styles: `
 
   `
 })
 export class HomePageComponent {
+  ngAfterViewInit(): void {
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: false
+    });
+  }
 
 }

@@ -1,25 +1,14 @@
-<app-header></app-header>
-<!-- @defer(on inmediate) {
+@defer(on viewport) {
 <section id="hero">
   <app-hero></app-hero>
 </section>
-}@placeholder {
-<div class="h-96 w-full text-center p-8 bg-base-300">
-  <span class="loading loading-ring loading-xl"></span>
-</div>
-} -->
 
-<div class="mx-0 md:mx-8 lg:mx-16 xl:mx-24">
-  @defer (on viewport) {
+<div class="mx-0">
+  <app-header></app-header>
+
   <section id="skills">
     <app-skills></app-skills>
   </section>
-  } @placeholder {
-  <div class="h-96 w-full text-center p-8 bg-base-300">
-    <span class="loading loading-ring loading-xl"></span>
-  </div>
-  }
-
 
   <section id="experience">
     <app-timeline></app-timeline>
@@ -33,6 +22,21 @@
     <app-frequently-asked></app-frequently-asked>
   </section>
 </div>
+
+<section>
+  <app-footer></app-footer>
+</section>
+}@loading(minimum 500ms) {
+<div class="min-h-screen w-full flex items-center justify-center">
+  <span class="loading loading-ring loading-lg" style="width: 4rem; height: 4rem;"></span>
+</div>
+}@placeholder {
+<div class="min-h-screen w-full flex items-center justify-center">
+  <span class="loading loading-ring loading-lg" style="width: 4rem; height: 4rem;"></span>
+</div>
+}
+
+
 
 
 <!-- <section>
@@ -48,7 +52,3 @@
     </div>
   }
 </section> -->
-
-<section>
-  <app-footer></app-footer>
-</section>

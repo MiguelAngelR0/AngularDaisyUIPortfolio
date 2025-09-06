@@ -13,6 +13,18 @@ import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin';
 })
 export class HeroComponent {
 
+  heroImageLoaded = false;
+
+  onHeroImageLoaded() {
+    this.heroImageLoaded = true;
+    console.log('Hero image loaded');
+  }
+
+
+
+
+
+
   ngAfterViewInit() {
     gsap.registerPlugin(MorphSVGPlugin);
 

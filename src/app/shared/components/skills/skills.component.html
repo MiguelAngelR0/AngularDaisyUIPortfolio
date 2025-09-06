@@ -1,34 +1,37 @@
-<div class="container mx-auto px-4 max-w-6xl">
-  <h1 class="text-3xl font-bold text-center mb-6 mt-8">Skills</h1>
+<div class="w-full overflow-hidden px-4">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold text-center mb-6 mt-8">Skills</h1>
 
-  <!-- Frontend Skills -->
-  <div class="mb-6">
-    <h2 class="text-xl font-semibold text-center mb-3 text-primary">Front-end</h2>
-    <div class="flex flex-wrap justify-evenly gap-3">
-      @for (skill of getFrontendSkills(); track skill.id) {
+    <!-- Frontend Skills -->
+    <div class="mb-6">
+      <h2 class="text-xl font-semibold text-center mb-3 text-primary">Front-end</h2>
+      <div class="flex flex-wrap justify-evenly gap-2 max-w-full">
+        @for (skill of getFrontendSkills(); track skill.id) {
         <app-skill [skill]="skill"></app-skill>
-      }
+        }
+      </div>
+    </div>
+
+    <!-- Backend Skills -->
+    <div class="mb-6">
+      <h2 class="text-xl font-semibold text-center mb-3 text-secondary">Back-end</h2>
+      <div class="flex flex-wrap justify-evenly gap-2 max-w-full">
+        @for (skill of getBackendSkills(); track skill.id) {
+        <app-skill [skill]="skill"></app-skill>
+        }
+      </div>
+    </div>
+
+    <!-- Tools -->
+    <div class="mb-6">
+      <h2 class="text-xl font-semibold text-center mb-3 text-accent">{{ 'skill.gadgets' | translate }}</h2>
+      <div class="flex flex-wrap justify-evenly gap-2 max-w-full">
+        @for (skill of getToolsSkills(); track skill.id) {
+        <app-skill [skill]="skill"></app-skill>
+        }
+      </div>
     </div>
   </div>
-  
-  <!-- Backend Skills -->
-  <div class="mb-6">
-    <h2 class="text-xl font-semibold text-center mb-3 text-secondary">Back-end</h2>
-    <div class="flex flex-wrap justify-evenly gap-3">
-      @for (skill of getBackendSkills(); track skill.id) {
-        <app-skill [skill]="skill"></app-skill>
-      }
-    </div>
-  </div>
-  
-  <!-- Tools -->
-  <div class="mb-6">
-    <h2 class="text-xl font-semibold text-center mb-3 text-accent">{{ 'skill.gadgets' | translate }}</h2>
-    <div class="flex flex-wrap justify-evenly gap-3">
-      @for (skill of getToolsSkills(); track skill.id) {
-        <app-skill [skill]="skill"></app-skill>
-      }
-    </div>
 </div>
 
 <!-- Certificate Modals -->
