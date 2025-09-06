@@ -1,12 +1,25 @@
 <app-header></app-header>
-
+<!-- @defer(on inmediate) {
 <section id="hero">
   <app-hero></app-hero>
 </section>
+}@placeholder {
+<div class="h-96 w-full text-center p-8 bg-base-300">
+  <span class="loading loading-ring loading-xl"></span>
+</div>
+} -->
+
 <div class="mx-0 md:mx-8 lg:mx-16 xl:mx-24">
+  @defer (on viewport) {
   <section id="skills">
     <app-skills></app-skills>
   </section>
+  } @placeholder {
+  <div class="h-96 w-full text-center p-8 bg-base-300">
+    <span class="loading loading-ring loading-xl"></span>
+  </div>
+  }
+
 
   <section id="experience">
     <app-timeline></app-timeline>
