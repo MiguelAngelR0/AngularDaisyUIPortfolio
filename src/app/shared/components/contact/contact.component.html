@@ -19,25 +19,29 @@
           <h2 class="card-title text-2xl mb-6 text-primary justify-center">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
             Envíame un mensaje
           </h2>
 
-          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-4">
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" [formGroup]="contactForm"
+            (ngSubmit)="onSubmit()" class="space-y-4">
+
+            <!-- Hidden field for Netlify -->
+            <input type="hidden" name="form-name" value="contact" />
+            <!-- Honeypot field for spam protection -->
+            <div style="display: none;">
+              <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+            </div>
 
             <!-- Name Input -->
             <div class="form-control">
               <label class="label">
                 <span class="label-text font-semibold">Nombre *</span>
               </label>
-              <input
-                type="text"
-                formControlName="name"
-                placeholder="Tu nombre completo"
+              <input type="text" name="name" formControlName="name" placeholder="Tu nombre completo"
                 class="input input-bordered w-full focus:input-primary"
-                [class.input-error]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched"
-              />
+                [class.input-error]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" />
               <label class="label" *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
                 <span class="label-text-alt text-error">El nombre es requerido</span>
               </label>
@@ -48,13 +52,9 @@
               <label class="label">
                 <span class="label-text font-semibold">Email *</span>
               </label>
-              <input
-                type="email"
-                formControlName="email"
-                placeholder="tu@email.com"
+              <input type="email" name="email" formControlName="email" placeholder="tu@email.com"
                 class="input input-bordered w-full focus:input-primary"
-                [class.input-error]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
-              />
+                [class.input-error]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" />
               <label class="label" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
                 <span class="label-text-alt text-error">
                   <span *ngIf="contactForm.get('email')?.errors?.['required']">El email es requerido</span>
@@ -69,35 +69,21 @@
                 <span class="label-text font-semibold">Empresa</span>
                 <span class="label-text-alt text-base-content/50">Opcional</span>
               </label>
-              <input
-                type="text"
-                formControlName="company"
-                placeholder="Nombre de tu empresa"
-                class="input input-bordered w-full focus:input-primary"
-              />
+              <input type="text" name="company" formControlName="company" placeholder="Nombre de tu empresa"
+                class="input input-bordered w-full focus:input-primary" />
             </div>
 
             <!-- Subject Input -->
             <div class="form-control">
-            <div class="form-control">
               <label class="label">
                 <span class="label-text font-semibold">Asunto *</span>
               </label>
-              <input
-                type="email"
-                formControlName="email"
-                placeholder="tu@email.com"
+              <input type="text" name="subject" formControlName="subject" placeholder="¿En qué puedo ayudarte?"
                 class="input input-bordered w-full focus:input-primary"
-                [class.input-error]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
-              />
-              <label class="label" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
-                <span class="label-text-alt text-error">
-                  <span *ngIf="contactForm.get('email')?.errors?.['required']">El email es requerido</span>
-                  <span *ngIf="contactForm.get('email')?.errors?.['email']">Ingresa un email válido</span>
-                </span>
+                [class.input-error]="contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched" />
+              <label class="label" *ngIf="contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched">
+                <span class="label-text-alt text-error">El asunto es requerido</span>
               </label>
-            </div>
-
             </div>
 
             <!-- Message Textarea -->
@@ -105,12 +91,10 @@
               <label class="label">
                 <span class="label-text font-semibold">Mensaje *</span>
               </label>
-              <textarea
-                formControlName="message"
+              <textarea name="message" formControlName="message"
                 placeholder="Cuéntame sobre tu proyecto, dudas o cómo puedo ayudarte..."
                 class="textarea textarea-bordered h-32 resize-none focus:textarea-primary"
-                [class.textarea-error]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
-              ></textarea>
+                [class.textarea-error]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"></textarea>
               <label class="label" *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
                 <span class="label-text-alt text-error">El mensaje es requerido</span>
               </label>
@@ -124,16 +108,14 @@
 
             <!-- Submit Button -->
             <div class="form-control mt-8">
-              <button
-                type="submit"
-                class="btn btn-primary btn-lg group"
-                [disabled]="contactForm.invalid || isSubmitting"
-                [class.loading]="isSubmitting"
-              >
+              <button type="submit" class="btn btn-primary btn-lg group"
+                [disabled]="contactForm.invalid || isSubmitting" [class.loading]="isSubmitting">
                 <span *ngIf="!isSubmitting" class="flex items-center gap-2">
                   Enviar Mensaje
-                  <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                  <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                   </svg>
                 </span>
                 <span *ngIf="isSubmitting">Enviando...</span>
@@ -141,14 +123,15 @@
             </div>
 
             <!-- Success/Error Messages -->
-            <div *ngIf="submitMessage" class="alert"
-                 [class.alert-success]="submitSuccess"
-                 [class.alert-error]="!submitSuccess">
+            <div *ngIf="submitMessage" class="alert" [class.alert-success]="submitSuccess"
+              [class.alert-error]="!submitSuccess">
               <svg *ngIf="submitSuccess" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <svg *ngIf="!submitSuccess" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <span>{{ submitMessage }}</span>
             </div>
@@ -159,3 +142,25 @@
 
   </div>
 </div>
+
+
+<form name="contact" method="POST" data-netlify="true">
+  <p>
+    <label>Your Name: <input type="text" name="name" /></label>
+  </p>
+  <p>
+    <label>Your Email: <input type="email" name="email" /></label>
+  </p>
+  <p>
+    <label>Your Role: <select name="role[]" multiple>
+        <option value="leader">Leader</option>
+        <option value="follower">Follower</option>
+      </select></label>
+  </p>
+  <p>
+    <label>Message: <textarea name="message"></textarea></label>
+  </p>
+  <p>
+    <button type="submit">Send</button>
+  </p>
+</form>

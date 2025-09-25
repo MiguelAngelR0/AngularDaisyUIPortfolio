@@ -99,16 +99,8 @@ export class ContactComponent implements OnInit {
       try {
         const formData = this.contactForm.value;
 
-        // Aquí puedes implementar diferentes opciones para enviar el email:
-
-        // Opción 1: EmailJS (recomendado para empezar)
-        await this.sendEmailWithEmailJS(formData);
-
-        // Opción 2: Tu propio backend
-        // await this.sendEmailWithBackend(formData);
-
-        // Opción 3: Netlify Forms (si usas Netlify)
-        // await this.sendEmailWithNetlify(formData);
+        // Use Netlify Forms for submission
+        await this.sendEmailWithNetlify(formData);
 
         this.submitSuccess = true;
         this.submitMessage = '¡Mensaje enviado correctamente! Te responderé pronto.';
@@ -168,22 +160,29 @@ export class ContactComponent implements OnInit {
 
 
 
-  // Opción 3: Netlify Forms (si tu sitio está en Netlify)
+  // Netlify Forms implementation
   private async sendEmailWithNetlify(formData: any): Promise<void> {
-    const form = new FormData();
-    form.append('form-name', 'contact');
+    // Create URLSearchParams for form submission
+    const params = new URLSearchParams();
+    params.append('form-name', 'contact');
+    
+    // Add all form fields
     Object.keys(formData).forEach(key => {
-      form.append(key, formData[key]);
+      if (formData[key]) {
+        params.append(key, formData[key]);
+      }
     });
 
     const response = await fetch('/', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(form as any).toString()
+      headers: { 
+        'Content-Type': 'application/x-www-form-urlencoded' 
+      },
+      body: params.toString()
     });
 
     if (!response.ok) {
-      throw new Error('Error sending form');
+      throw new Error(`Network response was not ok: ${response.status}`);
     }
   }
 
